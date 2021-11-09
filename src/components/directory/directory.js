@@ -8,7 +8,7 @@ class Directory extends Component {
         super(props);
 
         this.state = {
-            section: [
+            sections: [
                 {
                     title: 'hats',
                     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -46,15 +46,13 @@ class Directory extends Component {
     }
 
     render() {
-        return (
-            <div className='directory-menu'>
-                {
-                    this.state.section.map(({title, id, imageUrl, size}) => {
-                        return <MenuItem key={id} title={title} size={size} imageUrl={imageUrl}/>
-                    })
-                }
-            </div>
-        )
+      return (
+        <div className='directory-menu'>
+          {this.state.sections.map(({ id, ...otherSectionProps }) => (
+            <MenuItem key={id} {...otherSectionProps} />
+          ))}
+        </div>
+      );
     }
 }
 
